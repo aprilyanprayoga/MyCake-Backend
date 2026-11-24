@@ -7,6 +7,7 @@ import productRoutes from "./routes/product.routes";
 import orderRoutes from "./routes/order.routes";
 import paymentRoutes from "./routes/payment.routes";
 import recapRoutes from "./routes/recap.routes";
+import { notFound, errorHandler } from "./middlewares/error.middleware";
 
 const app = express();
 
@@ -33,5 +34,7 @@ app.get("/api/health", async (_req, res) => {
         });
     }
 });
+app.use(notFound);
+app.use(errorHandler);
 
 export default app;
