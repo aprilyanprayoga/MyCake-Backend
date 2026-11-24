@@ -65,7 +65,7 @@ export async function register(req: Request, res: Response) {
             message: "Registrasi berhasil",
             data: {
                 token,
-                user: { id: userId, name, email, role: "customer" },
+                user: { id: userId, name, email, phone, role: "customer" },
             },
         });
     } catch (error) {
@@ -96,6 +96,7 @@ export async function login(req: Request, res: Response) {
                 id: users.id,
                 name: users.name,
                 email: users.email,
+                phone: users.phone,
                 password: users.password,
                 role: roles.name,
             })
@@ -119,7 +120,13 @@ export async function login(req: Request, res: Response) {
             message: "Login berhasil",
             data: {
                 token,
-                user: { id: user.id, name: user.name, email: user.email, role: user.role },
+                user: {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    phone: user.phone,
+                    role: user.role,
+                },
             },
         });
     } catch (error) {
